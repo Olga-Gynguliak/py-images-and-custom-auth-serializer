@@ -49,4 +49,6 @@ class AuthTokenSerializer(serializers.Serializer):
                 msg = _("Incorrect email or password.")
                 raise serializers.ValidationError(msg, code="authorization")
             data["user"] = user
-            return data
+        else:
+            raise serializers.ValidationError(_("Must include 'email' and 'password'"))
+        return data
