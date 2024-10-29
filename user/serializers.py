@@ -38,7 +38,7 @@ class AuthTokenSerializer(serializers.Serializer):
         password = data.get("password")
 
         if email and password:
-            user = authenticate(email=email, password=password)
+            user = authenticate(username=email, password=password)
             if user:
                 if not user.is_active:
                     msg = _("User account is disabled.")
